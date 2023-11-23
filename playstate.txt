@@ -1,0 +1,397 @@
+package com.focusshift.states;
+
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
+import com.badlogic.gdx.physics.box2d.World;
+import com.focusshift.handler.AssetLoader;
+
+public class PlayState extends State {
+	
+	private World world;
+	private Box2DDebugRenderer b2dr;
+
+//	private Array<Entity> entities;
+//	private PlayerTop playertop;
+//	private PlayerBottom playerbottom;
+//	private RenderLevel level;
+	
+//	private boolean debug = false;
+//	private boolean debug2 = false;
+//	
+//	public static int level = 1;
+//	
+//	public static final float PPM = 100;
+//	
+//	private World world;
+//	private MyContactListener cl;
+//	private Box2DDebugRenderer b2dr;
+//	
+//	private OrthographicCamera cam;
+//	private OrthographicCamera b2dCam;
+//	private OrthographicCamera hudCam;
+//	
+//	private WhitePlayer whitePlayer;
+//	private BlackPlayer blackPlayer;
+//	private Array<BlackBlock> bblocks;
+//	private Array<WhiteBlock> wblocks;
+//	private Array<Crystal> crystals;
+//	private Array<Spike> spikes;
+	
+//	private boolean whiteActive;
+
+	public PlayState(GSM gsm, AssetLoader assetloader) {
+		super(gsm, assetloader);
+		
+		world = new World(new Vector2(0, -9.81f), true);
+		b2dr = new Box2DDebugRenderer();
+		
+//		entities = new Array<Entity>();
+//		playertop = new PlayerTop(assetloader, cam);
+//		playerbottom = new PlayerBottom(assetloader, cam);
+//		level = new RenderLevel(assetloader, 0);
+		
+//		world = new World(new Vector2(0, 0), true);
+//		world.setContactListener(cl = new MyContactListener());
+//		b2dr = new Box2DDebugRenderer();
+//		
+//		cam = new OrthographicCamera();
+//		cam.setToOrtho(false, FocusShift.WIDTH, FocusShift.HEIGHT);
+//		b2dCam = new OrthographicCamera();
+//		b2dCam.setToOrtho(false, FocusShift.WIDTH / PPM, FocusShift.HEIGHT / PPM);
+//		hudCam = new OrthographicCamera();
+//		hudCam.setToOrtho(false, FocusShift.WIDTH, FocusShift.HEIGHT);
+//		
+//		initPlayers();
+//		initBlocks();
+//		initFloor();
+//		initCrystal();
+//		initSpikes();
+	}
+
+	public void handleInput() {
+//		if(Gdx.input.isButtonPressed(Keys.SPACE)) {
+//			for(int i = 0; i < bblocks.size; i++) { bblocks.get(i).toggleActive();; }
+//			for(int i = 0; i < wblocks.size; i++) { wblocks.get(i).toggleActive();; }
+//			whiteActive = !whiteActive;
+//		}
+//		
+//		if(Gdx.input.isButtonPressed(Keys.RIGHT)) {
+//			blackPlayer.getBody().applyForceToCenter(4, 0, true);
+//			whitePlayer.getBody().applyForceToCenter(4, 0, true);
+//		}
+//		if(Gdx.input.isButtonPressed(Keys.LEFT)) {
+//			blackPlayer.getBody().applyForceToCenter(-4, 0, true);
+//			whitePlayer.getBody().applyForceToCenter(-4, 0, true);
+//		}
+//		if(Gdx.input.isButtonPressed(Keys.UP)) {
+//			if(cl.isBPGrounded() && !whiteActive) {
+//				// Game.res.getSound("jump").play();
+//				blackPlayer.getBody().applyLinearImpulse(0, 3, 0, 0, true);
+//				whitePlayer.getBody().applyLinearImpulse(0, -3, 0, 0, true);
+//			}
+//			if(cl.isWPGrounded() && whiteActive) {
+//				// Game.res.getSound("jump").play();
+//				blackPlayer.getBody().applyLinearImpulse(0, 3, 0, 0, true);
+//				whitePlayer.getBody().applyLinearImpulse(0, -3, 0, 0, true);
+//			}
+//		}
+		
+		
+//		if(debug2 && Game.input.isPressed(MyInput.NEXT)) {
+//			level++;
+//			gsm.setState(GSM.PLAY);
+//		}
+	}
+
+	public void tick(float dt) {
+		
+		world.step(dt, 6, 2);
+		
+//		for (int i = 0; i < entities.size; i++) {
+//			entities.get(i).tick(dt);
+//		}
+//		if (level.collides(playertop, playerbottom)) {
+//			playertop.setColliding(true);
+//			playerbottom.setColliding(true);
+//		}
+//		else {
+//			playertop.setColliding(false);
+//			playerbottom.setColliding(true);
+//		}
+//		playertop.tick(dt);
+//		playerbottom.tick(dt);
+		
+		
+//		if(entering || leaving) {
+//			time += dt;
+//		}
+//		
+//		if(cl.isPlayerHit()) return;
+//		
+//		handleInput();
+//		
+//		whitePlayer.update(dt);
+//		blackPlayer.update(dt);
+//		
+//		world.step(1/60f, 1, 1);
+//		
+//		Array<Body> bodies = cl.getBodies();
+//		for(int i = 0; i < bodies.size; i++) {
+//			Body b = bodies.get(i);
+//			if(b.getUserData() instanceof Crystal) {
+//				Crystal c = (Crystal) b.getUserData();
+//				crystals.removeValue(c, true);
+//				world.destroyBody(b);
+//				// Game.res.getSound("collect").play();
+//			}
+//		}
+//		bodies.clear();
+//		
+//		if(whiteActive) {
+//			blackPlayer.getBody().setTransform(whitePlayer.getPosition().x, FocusShift.HEIGHT / PPM - whitePlayer.getPosition().y, 0);
+//			blackPlayer.getBody().setLinearVelocity(whitePlayer.getBody().getLinearVelocity().x, -whitePlayer.getBody().getLinearVelocity().y);
+//		}
+//		else {
+//			whitePlayer.getBody().setTransform(blackPlayer.getPosition().x, FocusShift.HEIGHT / PPM - blackPlayer.getPosition().y, 0);
+//			whitePlayer.getBody().setLinearVelocity(blackPlayer.getBody().getLinearVelocity().x, -blackPlayer.getBody().getLinearVelocity().y);
+//		}
+//		
+//		for(int i = 0; i < spikes.size; i++) {
+//			spikes.get(i).update(dt);
+//		}
+//		
+//		if(cl.isPlayerHit() && !leaving) {
+//			leaving = true;
+//			nextState = new PlayState(gsm, assetloader);
+//			// Game.res.getSound("hit").play();
+//		}
+//		
+//		if(crystals.size == 0 && !leaving) {
+//			leaving = true;
+//			level++;
+//			if(level == 11) {
+//				nextState = new MenuState(gsm, assetloader);
+//			}
+//			else {
+//				nextState = new PlayState(gsm, assetloader);
+//			}
+//		}
+	}
+
+	public void render(SpriteBatch sb) {
+		b2dr.render(world, cam.combined);
+		
+//		sb.setProjectionMatrix(cam.combined);
+//		sb.begin();
+//		level.render(sb);
+//		for (int i = 0; i < entities.size; i++) {
+//			entities.get(i).render(sb);
+//		}
+//		playertop.render(sb);
+//		playerbottom.render(sb);
+//		sb.end();
+		
+		
+//		sb.setProjectionMatrix(hudCam.combined);
+//		sb.begin();
+//		sb.draw(assetloader.blackblock, 0, FocusShift.HEIGHT / 2, FocusShift.WIDTH, FocusShift.HEIGHT / 2);
+//		sb.setColor(Color.WHITE);
+//		sb.draw(assetloader.blackblock, 0, 0, FocusShift.WIDTH, FocusShift.HEIGHT / 2);
+//		sb.setColor(1, 1, 1, 1);
+//		sb.end();
+//		
+//		cam.position.set(blackPlayer.getx(), FocusShift.HEIGHT / 2, 0);
+//		cam.update();
+//		sb.setProjectionMatrix(cam.combined);
+//		sb.begin();
+//		for(int i = 0; i < bblocks.size; i++) {
+//			bblocks.get(i).render(sb);
+//		}
+//		for(int i = 0; i < wblocks.size; i++) {
+//			wblocks.get(i).render(sb);
+//		}
+//		for(int i = 0; i < crystals.size; i++) {
+//			crystals.get(i).render(sb);;
+//		}
+//		for(int i = 0; i < spikes.size; i++) {
+//			spikes.get(i).render(sb);
+//		}
+//		whitePlayer.render(sb);
+//		blackPlayer.render(sb);
+//		sb.end();
+//		
+//		sb.setProjectionMatrix(hudCam.combined);
+//		if(entering) {
+//			sb.begin();
+//			sb.draw(assetloader.blackblock, (time / ttime) * FocusShift.WIDTH, FocusShift.HEIGHT / 2, FocusShift.WIDTH, FocusShift.HEIGHT / 2);
+//			sb.setColor(Color.WHITE);
+//			sb.draw(assetloader.blackblock, (time / ttime) * FocusShift.WIDTH, 0, FocusShift.WIDTH, FocusShift.HEIGHT / 2);
+//			sb.setColor(1, 1, 1, 1);
+//			sb.end();
+//			if(time > ttime) {
+//				entering = false;
+//				time = 0;
+//			}
+//		}
+//		if(leaving) {
+//			sb.begin();
+//			sb.draw(assetloader.blackblock, 0, FocusShift.HEIGHT / 2, (time / ttime) * FocusShift.WIDTH, FocusShift.HEIGHT / 2);
+//			sb.setColor(Color.WHITE);
+//			sb.draw(assetloader.blackblock, 0, 0, (time / ttime) * FocusShift.WIDTH, FocusShift.HEIGHT / 2);
+//			sb.setColor(1, 1, 1, 1);
+//			sb.end();
+//			if(time > ttime) {
+//				leaving = false;
+//				time = 0;
+//				gsm.set(nextState);
+//			}
+//		}
+//		
+//		if(debug) {
+//			b2dCam.position.set(blackPlayer.getbx(), FocusShift.HEIGHT / 2 / PPM, 0);
+//			b2dCam.update();
+//			b2dr.render(world, b2dCam.combined);
+//		}
+	}
+	
+//	private void initPlayers() {
+//		
+//		BodyDef bdef = new BodyDef();
+//		bdef.type = BodyType.DynamicBody;
+//		FixtureDef fdef = new FixtureDef();
+//		PolygonShape shape = new PolygonShape();
+//		shape.setAsBox(6 / PPM, 6 / PPM);
+//		fdef.shape = shape;
+//		FixtureDef fdef2 = new FixtureDef();
+//		PolygonShape shape2 = new PolygonShape();
+//		fdef2.shape = shape2;
+//		fdef2.isSensor = true;
+//		
+//		bdef.position.set(LevelData.getPlayerPosition(level).scl(1 / PPM));
+//		Body body = world.createBody(bdef);
+//		body.createFixture(fdef).setUserData("player");
+//		shape2.setAsBox(4 / PPM, 2 / PPM, new Vector2(0, -4 / PPM), 0);
+//		body.createFixture(fdef2).setUserData("blackfoot");
+//		blackPlayer = new BlackPlayer(body, assetloader);
+//		body.setUserData(blackPlayer);
+//		
+//		bdef.position.set(body.getPosition().x, 240 / PPM - body.getPosition().y);
+//		body = world.createBody(bdef);
+//		body.createFixture(fdef).setUserData("player");
+//		shape2.setAsBox(4 / PPM, 2 / PPM, new Vector2(0, 4 / PPM), 0);
+//		body.createFixture(fdef2).setUserData("whitefoot");
+//		whitePlayer = new WhitePlayer(body, assetloader);
+//		body.setUserData(whitePlayer);
+//		
+//	}
+//	
+//	private void initBlocks() {
+//		
+//		bblocks = new Array<BlackBlock>();
+//		wblocks = new Array<WhiteBlock>();
+//		whiteActive = false;
+//		
+//		BodyDef bdef = new BodyDef();
+//		FixtureDef fdef = new FixtureDef();
+//		
+//		ChainShape cs = new ChainShape();
+//		Vector2[] v = new Vector2[4];
+//		v[0] = new Vector2(-8 / PPM, -8 / PPM);
+//		v[1] = new Vector2(-8 / PPM, 8 / PPM);
+//		v[2] = new Vector2(8 / PPM, 8 / PPM);
+//		v[3] = new Vector2(8 / PPM, -8 / PPM);
+//		cs.createLoop(v);
+//		fdef.shape = cs;
+//		
+//		Array<Vector2> vec = LevelData.getBlackBlocks(level);
+//		
+//		for(int i = 0; i < vec.size; i++) {
+//			
+//			bdef.position.set(vec.get(i).x / PPM, vec.get(i).y / PPM);
+//			Body body = world.createBody(bdef);
+//			body.createFixture(fdef).setUserData("block");
+//			
+//			BlackBlock bb = new BlackBlock(body, assetloader);
+//			bblocks.add(bb);
+//			body.setUserData(bb);
+//			
+//		}
+//		
+//		vec = LevelData.getWhiteBlocks(level);
+//		
+//		for(int i = 0; i < vec.size; i++) {
+//			
+//			bdef.position.set(vec.get(i).x / PPM, vec.get(i).y / PPM);
+//			Body body = world.createBody(bdef);
+//			body.createFixture(fdef).setUserData("block");
+//			
+//			WhiteBlock wb = new WhiteBlock(body, assetloader);
+//			wblocks.add(wb);
+//			body.setUserData(wb);
+//			
+//		}
+//		
+//	}
+//	
+//	private void initFloor() {
+//		BodyDef bdef = new BodyDef();
+//		bdef.position.set(160 / PPM, FocusShift.HEIGHT / 2 / PPM);
+//		FixtureDef fdef = new FixtureDef();
+//		PolygonShape shape = new PolygonShape();
+//		shape.setAsBox(600 / PPM, 1 / PPM);
+//		fdef.shape = shape;
+//		world.createBody(bdef).createFixture(fdef).setUserData("ground");
+//	}
+//	
+//	private void initCrystal() {
+//		
+//		crystals = new Array<Crystal>();
+//		
+//		BodyDef bdef = new BodyDef();
+//		FixtureDef fdef = new FixtureDef();
+//		PolygonShape shape = new PolygonShape();
+//		shape.setAsBox(5 / PPM, 5 / PPM);
+//		fdef.shape = shape;
+//		fdef.isSensor = true;
+//		
+//		Array<Vector2> vec = LevelData.getCrystals(level);
+//		
+//		for(int i = 0; i < vec.size; i++) {
+//			
+//			bdef.position.set(vec.get(i).x / PPM, vec.get(i).y / PPM);
+//			Body body = world.createBody(bdef);
+//			body.createFixture(fdef).setUserData("crystal");
+//			
+//			Crystal c = new Crystal(body, assetloader);
+//			crystals.add(c);
+//			body.setUserData(c);
+//			
+//		}
+//		
+//	}
+//	
+//	private void initSpikes() {
+//		
+//		spikes = new Array<Spike>();
+//		
+//		BodyDef bdef = new BodyDef();
+//		FixtureDef fdef = new FixtureDef();
+//		PolygonShape shape = new PolygonShape();
+//		shape.setAsBox(4 / PPM, 4 / PPM);
+//		fdef.shape = shape;
+//		fdef.isSensor = true;
+//		
+//		Array<Vector2> vec = LevelData.getSpikes(level);
+//		
+//		for(int i = 0; i < vec.size; i++) {
+//			bdef.position.set(vec.get(i).x / PPM, vec.get(i).y / PPM);
+//			Body body = world.createBody(bdef);
+//			body.createFixture(fdef).setUserData("spike");
+//			Spike s = new Spike(body, assetloader);
+//			spikes.add(s);
+//			body.setUserData(s);
+//		}
+//		
+//	}
+}
